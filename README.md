@@ -13,7 +13,8 @@ The request payload received as JSON:
 ```json
 {
   "subtract": {
-    "intA":3, "intB":1
+    "intA":3,
+    "intB":1
   }
 }
 ```
