@@ -47,4 +47,20 @@ public final class Instruction {
             return subtract;
         }
     }
+
+    String soapAction() {
+        return "\"http://tempuri.org/" + operationName() + "\"";
+    }
+
+    private String operationName() {
+        if (add != null) {
+            return "Add";
+        } else if (divide != null) {
+            return "Divide";
+        } else if (multiply != null) {
+            return "Multiply";
+        } else {
+            return "Subtract";
+        }
+    }
 }
