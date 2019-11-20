@@ -28,13 +28,14 @@ public class LoggingServer extends HttpServerInitializerFactory {
     public LoggingServer() {
     }
 
-    public LoggingServer(final NettyConsumer consumer) {
-        super((NettyHttpConsumer) consumer);
+    public LoggingServer(final NettyHttpConsumer consumer) {
+        super(consumer);
     }
 
     @Override
     public ServerInitializerFactory createPipelineFactory(final NettyConsumer consumer) {
-        return new LoggingServer(consumer);
+        assert consumer instanceof NettyHttpConsumer;
+        return new LoggingServer((NettyHttpConsumer) consumer);
     }
 
     @Override

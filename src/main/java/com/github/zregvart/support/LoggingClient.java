@@ -28,13 +28,14 @@ public class LoggingClient extends HttpClientInitializerFactory {
     public LoggingClient() {
     }
 
-    public LoggingClient(final NettyProducer producer) {
-        super((NettyHttpProducer) producer);
+    public LoggingClient(final NettyHttpProducer producer) {
+        super(producer);
     }
 
     @Override
     public ClientInitializerFactory createPipelineFactory(final NettyProducer producer) {
-        return new LoggingClient(producer);
+        assert producer instanceof NettyHttpProducer;
+        return new LoggingClient((NettyHttpProducer) producer);
     }
 
     @Override
