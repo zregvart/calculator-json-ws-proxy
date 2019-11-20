@@ -13,4 +13,4 @@ EXPOSE 8080
 ARG TARGET=/build/target
 COPY --from=build ${TARGET}/dependency lib
 COPY --from=build ${TARGET}/calculator-json-ws-proxy.jar .
-ENTRYPOINT ["java", "-cp", "calculator-json-ws-proxy.jar:lib/*", "com.github.zregvart.Calculator"]
+ENTRYPOINT java $JAVA_OPTS -cp calculator-json-ws-proxy.jar:lib/* com.github.zregvart.Calculator
