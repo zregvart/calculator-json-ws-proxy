@@ -35,10 +35,10 @@ public final class CalculatorRoute extends RouteBuilder {
             .marshal(soap)
             .log("${body}")
             .toD("netty-http:"
-                + "${headers." + Exchange.HTTP_SCHEME + "}://"
-                + "${headers." + Exchange.HTTP_HOST + "}:"
-                + "${headers." + Exchange.HTTP_PORT + "}"
-                + "${headers." + Exchange.HTTP_PATH + "}")
+                + "${header." + Exchange.HTTP_SCHEME + "}://"
+                + "${header.Host}:"
+                + "${header." + Exchange.HTTP_PORT + "}"
+                + "${header." + Exchange.HTTP_PATH + "}")
             .unmarshal(soap)
             .log("${body}")
             .marshal(json);
