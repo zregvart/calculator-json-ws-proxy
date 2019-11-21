@@ -18,7 +18,7 @@ import org.apache.camel.main.Main;
 public final class Calculator {
 
     public static void main(final String[] args) throws Exception {
-        try (Main main = new Main()) {
+        try (Main main = new Main(Configuration.class)) {
             main.addRoutesBuilder(new CalculatorRoute());
             main.run(args);
         }

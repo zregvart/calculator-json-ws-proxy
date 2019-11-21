@@ -36,7 +36,7 @@ public final class CalculatorRoute extends RouteBuilder {
             .log("${body}")
             .toD("netty-http:"
                 + "${header." + Exchange.HTTP_SCHEME + "}://"
-                + "${header.Host}:"
+                + "${bean:svc?method=hostname}:"
                 + "${header." + Exchange.HTTP_PORT + "}"
                 + "${header." + Exchange.HTTP_PATH + "}")
             .unmarshal(soap)
