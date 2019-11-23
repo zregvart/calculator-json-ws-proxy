@@ -29,10 +29,10 @@ public final class CalculatorRoute extends RouteBuilder {
 
         from("netty-http:proxy://0.0.0.0:8080")
             .unmarshal(json)
-            .setHeader("Content-Type", constant("application/soap+xml; charset=\"utf-8\""))
             .setHeader("SOAPAction", simple("${body.soapAction()}"))
             .setBody(simple("${body.operation()}"))
             .marshal(soap)
+            .setHeader("Content-Type", constant("application/soap+xml; charset=\"utf-8\""))
             .log("${body}")
             .toD("netty-http:"
                 + "${header." + Exchange.HTTP_SCHEME + "}://"
